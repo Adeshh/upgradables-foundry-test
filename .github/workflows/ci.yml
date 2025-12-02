@@ -13,14 +13,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
         with:
-          version: nightly
-
-      - name: Install dependencies
-        run: forge install --no-git --no-commit
+          version: stable
 
       - name: Run tests
         run: forge test
